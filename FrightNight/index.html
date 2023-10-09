@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halloween Pranks Shop</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f8f8f8;
+      font-family: 'Arial', sans-serif;
+    }
+
+    #main-info {
+      background-color: #280820;
+      padding: 50px;
+      text-align: center;
+    }
+    #main-info img {
+      width: 130px;
+      height: 200px;
+    }
+
+    #main-info h1 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    #sign-up-btn {
+      background-color: #ff9900;
+      color: #1a1a1a;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      display: block;
+      margin-left: 520px;
+    }
+
+    #prank-categories {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 50px 0;
+    }
+
+    .prank-category {
+      background-color: #260b42;
+      border: 2px solid #3b2809;
+      border-radius: 10px;
+      padding: 20px;
+      width: 30%;
+      text-align: center;
+      margin: 10px;
+    }
+
+    #prank-categories .prank-category img {
+      filter: brightness(0.8);
+      width: 130px;
+      height: 100px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    #features {
+      background-color: #1a1a1a;
+      color: #f8f8f8;
+      padding: 50px;
+    }
+
+    #features .row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    #features .row .description,
+    #features .row .feature-image img {
+      width: 500px;
+      height: 200px;
+      border-radius: 10px;
+    }
+    #features .row .description {
+      text-align: left;
+    }
+
+    #features .row .description h2 {
+      color: #ff9900;
+    }
+
+    #team {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      background-color: #1a1a1a;
+      color: #f8f8f8;
+      padding: 50px;
+    }
+
+    .person {
+      width: 30%;
+      text-align: center;
+      margin: 20px;
+      padding: 20px;
+      border: 2px solid #663399;
+      border-radius: 10px;
+      background-color: #3d3d3d;
+    }
+
+    .person img {
+      width: 140px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #ff9900;
+      margin-bottom: 10px;
+    }
+
+    .person h2 {
+      color: #ff9900;
+    }
+
+    .person p {
+      margin-bottom: 10px;
+    }
+
+    .navbar {
+      background-color: #3d3d3d;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #ff9900;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-right: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #f8f8f8;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        background-color: #3d3d3d;
+        width: 100%;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 0;
+        margin-bottom: 10px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .navbar .logo {
+        margin-bottom: 10px;
+      }
+    }
+
+    #carousel {
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .nav-lines {
+      margin-top: 20px;
+    }
+
+    .line {
+      width: 15px;
+      height: 2px;
+      background-color: #ff9900;
+      display: inline-block;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .arrows {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .arrow {
+      font-size: 2em;
+      color: #ff9900;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .arrows {
+        font-size: 1.5em;
+      }
+    }
+
+    #accordion {
+      margin: 50px 0;
+    }
+
+    .accordion-item {
+      margin-bottom: 20px;
+    }
+
+    .accordion-header {
+      background-color: #260b42;
+      color: #ff9900;
+      padding: 15px;
+      cursor: pointer;
+      border: 2px solid #3b2809;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px;
+      border: 2px solid #3b2809;
+      border-radius: 10px;
+      background-color: #1a1a1a;
+    }
+
+    @media screen and (max-width: 768px) {
+      .accordion-header {
+        font-size: 1.5em;
+      }
+
+      .accordion-content {
+        padding: 10px;
+      }
+    }
+
+    #contact {
+      background-color: #1a1a1a;
+      color: #f8f8f8;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .contact-form {
+      margin-bottom: 20px;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-form label {
+      margin-bottom: 10px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #3b2809;
+      border-radius: 5px;
+    }
+
+    .contact-form button {
+      background-color: #ff9900;
+      color: #1a1a1a;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-info {
+      border: 2px solid #3b2809;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .contact-info h3 {
+      color: #ff9900;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">Halloween Pranks</div>
+  <ul class="nav-links">
+    <li><a href="#main-info">Home</a></li>
+    <li><a href="#prank-categories">Categories</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="main-info">
+  <h1>Welcome to our Halloween Pranks Shop!</h1>
+  <p>Get ready for a spooky and hilarious Halloween with our collection of pranks and tricks.</p>
+  <img src="assets/Tied up.jfif" alt="Symbol 2">
+  <button id="sign-up-btn">Sign Up</button>
+</section>
+
+<section id="prank-categories">
+  <div class="prank-category">
+    <img src="" alt="Symbol 1">
+    <h2>Costume Pranks</h2>
+    <p>Spook your friends with our creative costume pranks that guarantee a night of laughter.</p>
+    <button>Explore</button>
+  </div>
+
+  <div class="prank-category">
+    <img src="" alt="Symbol 2">
+    <h2>Kidnapping</h2>
+    <p>Transform your friends' lives into a nightmare for an hour of escape games with even more thrills.</p>
+    <button>Explore</button>
+  </div>
+
+  <div class="prank-category">
+    <img src="" alt="Symbol 3">
+    <h2>Outdoor Surprises</h2>
+    <p>Create unforgettable outdoor moments with our outdoor Halloween pranks and surprises.</p>
+    <button>Explore</button>
+  </div>
+</section>
+
+<section id="features">
+  <div class="row">
+    <div class="description">
+      <h2>Spooky Costumes</h2>
+      <p>Explore our feature on spine-chilling costumes that will turn heads and give a good scare.</p>
+    </div>
+    <div class="feature-image">
+      <img src="assets/Outdoor.png" alt="outdoor">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="feature-image">
+      <img src="assets/Decoration.png" alt="decoration">
+    </div>
+    <div class="description">
+      <h2>Ghostly Decorations</h2>
+      <p>Discover how to transform your space into a haunted house with our featured decorations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="person">
+    <img src="../assets/Antoine Jackson.png" alt="Antoine Jackson">
+    <h2>Antoine Jackson</h2>
+    <p>Artistic Director</p>
+    <p>The creator of all this, he has all the ideas of how to do the best pranks.</p>
+  </div>
+
+  <div class="person">
+    <img src="../assets/Teyière.png" alt="Tey Ina">
+    <h2>Teyière Inago</h2>
+    <p>Assistant</p>
+    <p>She has to make plans for all of the frights and work reunions.</p>
+  </div>
+
+  <div class="person">
+    <img src="../assets/Jack.png" alt="Jack">
+    <h2>Jack Jack</h2>
+    <p>Master of Mischief</p>
+    <p>On the field, he is the one that decides how to handle little mishaps or other interventions.</p>
+  </div>
+
+  <div class="person">
+    <img src="../assets/Alice.jpg" alt="Alice">
+    <h2>Alice Williams</h2>
+    <p>Prank Specialist</p>
+    <p>Replaces Antoine Jackson in the creation of some of the pranks.</p>
+  </div>
+</section>
+
+<section id="carousel">
+  <div class="carousel-container">
+    <div class="slide" id="slide1">
+      <img src="assets/1.jpg" alt="Carousel Image 1">
+    </div>
+    <div class="slide" id="slide2">
+      <img src="assets/2.avif" alt="Carousel Image 2">
+    </div>
+    <div class="slide" id="slide3">
+      <img src="assets/3.jpg" alt="Carousel Image 3">
+    </div>
+  </div>
+
+  <div class="nav-lines">
+    <div class="line" data-slide="1"></div>
+    <div class="line" data-slide="2"></div>
+    <div class="line" data-slide="3"></div>
+  </div>
+
+  <div class="arrows">
+    <div class="arrow left" onclick="changeSlide('prev')">&#10094;</div>
+    <div class="arrow right" onclick="changeSlide('next')">&#10095;</div>
+  </div>
+</section>
+
+<section id="accordion">
+  <h2>Accordion Section</h2>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion('item1')">lorem ipsum</div>
+    <div class="accordion-content" id="item1">
+      <p> Fusce eget lorem non libero accumsan varius. Etiam suscipit vestibulum nisi, et porttitor mi lobortis nec. Nam sit amet nisi vel orci gravida pulvinar. Aenean ac velit suscipit, dapibus nibh at, aliquam purus. Proin convallis suscipit eros, quis tristique dolor imperdiet in. Maecenas ut orci aliquet, imperdiet erat sed, tincidunt elit. In hac habitasse platea dictumst. Maecenas congue lacus id eleifend efficitur. Mauris dapibus nisi quis nisl sodales interdum. Fusce posuere sodales felis, nec congue velit aliquet quis. Nullam ac quam dolor. Suspendisse fermentum massa orci, vitae viverra ante convallis a. </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion('item2')">Dos tres</div>
+    <div class="accordion-content" id="item2">
+      <p>efficitur ante libero et augue. Integer placerat nulla nec lobortis venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam hendrerit arcu a ornare rhoncus. Praesent eget sem lobortis, consequat diam quis, gravida libero. Mauris et convallis velit, bibendum vestibulum tellus. Ut rhoncus pretium ligula quis vestibulum. Phasellus non finibus nunc. Interdum et malesuada </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion('item3')">nulla finibus</div>
+    <div class="accordion-content" id="item3">
+      <p>maximus. Phasellus elementum aliquam mi vel pellentesque. Nulla finibus, nisl ac auctor tincidunt, risus felis ultricies metus, nec pulvinar neque tellus sed sem. Suspendisse potenti. Aliquam tincidunt interdum mauris, ac convallis purus feugiat et. Quisque imperdiet convallis placerat. Nullam vitae blandit nisi. In eu est in mi volutpat iaculis eget eu ante. Cras et libero elit. Vestibulum feugiat justo nunc, vitae convallis ante molestie accumsan. Duis laoreet metus non ipsum facilisis, .</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Section</h2>
+
+  <div class="contact-form">
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="contact-info">
+    <h3>Our Office</h3>
+    <p>0 dupont street</p>
+    <p>Spooky Town, Hauntland</p>
+    <p>Email: sofiane.kherraf@efrei.net</p>
+    <p>Phone: +1 (666) 123-4567</p>
+  </div>
+</section>
+
+</body>
+</html>
